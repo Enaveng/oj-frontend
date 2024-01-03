@@ -3,8 +3,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { JsonConfig } from './JsonConfig';
 import type { JudgeCase } from './JudgeCase';
+import type { JudgeConfig } from './JudgeConfig';
 
 export type QuestionQueryRequest = {
     acceptedNum?: number;
@@ -13,7 +13,7 @@ export type QuestionQueryRequest = {
     current?: number;
     id?: number;
     judgeCase?: Array<JudgeCase>;
-    judgeConfig?: JsonConfig;
+    judgeConfig?: JudgeConfig;
     pageSize?: number;
     sortField?: string;
     sortOrder?: string;

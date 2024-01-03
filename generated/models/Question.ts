@@ -3,21 +3,20 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { JudgeConfig } from './JudgeConfig';
-import type { UserVO } from './UserVO';
-
-export type QuestionVO = {
+export type Question = {
     acceptedNum?: number;
+    answer?: string;
     content?: string;
     createTime?: string;
     favourNum?: number;
     id?: number;
-    judgeConfig?: JudgeConfig;
+    isDelete?: number;
+    judgeCase?: string;
+    judgeConfig?: string;
     submitNum?: number;
-    tags?: Array<string>;
+    tags?: string;
     thumbNum?: number;
     title?: string;
     updateTime?: string;
-    user?: UserVO;
     userId?: number;
 };

@@ -1,15 +1,13 @@
 // initial state
 import { StoreOptions } from "vuex";
-import { UserControllerService } from "../../generated";
-import { ErrorCodes } from "vue";
 import ACCESS_ENUM from "@/access/accessEnum";
+import { UserControllerService } from "../../generated";
 
 export default {
   namespaced: true,
   state: () => ({
     loginUser: {
       userName: "未登录",
-      role: "notLogin",
     },
   }),
   actions: {

@@ -13,10 +13,10 @@
         >
           <div class="title-bar">
             <img class="logo" src="../assets/oj.logo.png" />
-            <div class="title">在线OJ系统</div>
+            <div class="title">在线OJ</div>
           </div>
         </a-menu-item>
-        <a-menu-item v-for="item in routes" :key="item.path">
+        <a-menu-item v-for="item in visibleRoutes" :key="item.path">
           {{ item.name }}
         </a-menu-item>
       </a-menu>
@@ -30,22 +30,48 @@
 </template>
 
 <script setup lang="ts">
-import { routes } from "../router/routers";
-import { ref } from "vue";
+import { routes } from "@/router/routers";
+import { useRouter } from "vue-router";
+import { computed, ref } from "vue";
 import { useStore } from "vuex";
-import { useRoute, useRouter } from "vue-router";
+import checkAccess from "@/access/checkAccess";
+import ACCESS_ENUM from "@/access/accessEnum";
 
 const router = useRouter();
+const store = useStore();
 
-//默认主页
+// 展示在菜单的路由数组
+const visibleRoutes = computed(() => {
+  return routes.filter((item, index) => {
+    if (item.meta?.hideInMenu) {
+      return false;
+    }
+    // 根据权限过滤菜单
+    if (
+      !checkAccess(store.state.user.loginUser, item?.meta?.access as string)
+    ) {
+      return false;
+    }
+    return true;
+  });
+});
+
+// 默认主页
 const selectedKeys = ref(["/"]);
 
-//路由跳转之后,更新选中的菜单项
+// 路由跳转后，更新选中的菜单项
 router.afterEach((to, from, failure) => {
   selectedKeys.value = [to.path];
 });
 
-const store = useStore();
+console.log();
+
+setTimeout(() => {
+  store.dispatch("user/getLoginUser", {
+    userName: "鱼皮管理员",
+    userRole: ACCESS_ENUM.ADMIN,
+  });
+}, 3000);
 
 const doMenuClick = (key: string) => {
   router.push({

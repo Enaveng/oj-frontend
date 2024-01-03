@@ -3,5 +3,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type JsonConfig = {
+export type JudgeInfo = {
+    memory?: number;
+    message?: string;
+    time?: number;
 };

@@ -3,14 +3,14 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { JsonConfig } from './JsonConfig';
 import type { JudgeCase } from './JudgeCase';
+import type { JudgeConfig } from './JudgeConfig';
 
 export type QuestionAddRequest = {
     answer?: string;
     content?: string;
     judgeCase?: Array<JudgeCase>;
-    judgeConfig?: JsonConfig;
+    judgeConfig?: JudgeConfig;
     tags?: Array<string>;
     title?: string;
 };

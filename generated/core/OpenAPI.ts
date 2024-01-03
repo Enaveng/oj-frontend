@@ -19,11 +19,10 @@ export type OpenAPIConfig = {
     ENCODE_PATH?: ((path: string) => string) | undefined;
 };
 
-//可以修改代码生成器提供的全局参数
 export const OpenAPI: OpenAPIConfig = {
     BASE: 'http://localhost:8121',
     VERSION: '1.0',
-    WITH_CREDENTIALS: false,
+    WITH_CREDENTIALS: true,
     CREDENTIALS: 'include',
     TOKEN: undefined,
     USERNAME: undefined,
